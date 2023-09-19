@@ -11,10 +11,10 @@
 
 --
 -- TOC entry 204 (class 1259 OID 16731)
--- Name: attendee; Type: TABLE; Schema: public; Owner: -
+-- Name: attendee; Type: TABLE; Schema: techconfdb; Owner: -
 --
 
-CREATE TABLE public.attendee (
+CREATE TABLE techconfdb.attendee (
     id integer NOT NULL,
     first_name text NOT NULL,
     last_name text NOT NULL,
@@ -32,11 +32,11 @@ CREATE TABLE public.attendee (
 
 --
 -- TOC entry 205 (class 1259 OID 16744)
--- Name: attendee_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: attendee_id_seq; Type: SEQUENCE; Schema: techconfdb; Owner: -
 --
 
-ALTER TABLE public.attendee ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.attendee_id_seq
+ALTER TABLE techconfdb.attendee ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME techconfdb.attendee_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -47,10 +47,10 @@ ALTER TABLE public.attendee ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 --
 -- TOC entry 202 (class 1259 OID 16722)
--- Name: conference; Type: TABLE; Schema: public; Owner: -
+-- Name: conference; Type: TABLE; Schema: techconfdb; Owner: -
 --
 
-CREATE TABLE public.conference (
+CREATE TABLE techconfdb.conference (
     id integer NOT NULL,
     name character varying(100) NOT NULL,
     active bit(1) NOT NULL,
@@ -62,11 +62,11 @@ CREATE TABLE public.conference (
 
 --
 -- TOC entry 203 (class 1259 OID 16729)
--- Name: conference_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: conference_id_seq; Type: SEQUENCE; Schema: techconfdb; Owner: -
 --
 
-ALTER TABLE public.conference ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.conference_id_seq
+ALTER TABLE techconfdb.conference ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME techconfdb.conference_id_seq
     START WITH 1
     INCREMENT BY 1
     MINVALUE 1
@@ -77,10 +77,10 @@ ALTER TABLE public.conference ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 --
 -- TOC entry 206 (class 1259 OID 16746)
--- Name: notification; Type: TABLE; Schema: public; Owner: -
+-- Name: notification; Type: TABLE; Schema: techconfdb; Owner: -
 --
 
-CREATE TABLE public.notification (
+CREATE TABLE techconfdb.notification (
     id integer NOT NULL,
     status text NOT NULL,
     message text NOT NULL,
@@ -92,11 +92,11 @@ CREATE TABLE public.notification (
 
 --
 -- TOC entry 207 (class 1259 OID 16754)
--- Name: notification_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: notification_id_seq; Type: SEQUENCE; Schema: techconfdb; Owner: -
 --
 
-ALTER TABLE public.notification ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.notification_id_seq
+ALTER TABLE techconfdb.notification ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME techconfdb.notification_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -108,10 +108,10 @@ ALTER TABLE public.notification ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY
 --
 -- TOC entry 2836 (class 0 OID 16731)
 -- Dependencies: 204
--- Data for Name: attendee; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: attendee; Type: TABLE DATA; Schema: techconfdb; Owner: -
 --
 
-INSERT INTO public.attendee (first_name, last_name, conference_id, job_position, email, company, city, state, interests, submitted_date, comments)
+INSERT INTO techconfdb.attendee (first_name, last_name, conference_id, job_position, email, company, city, state, interests, submitted_date, comments)
 VALUES
 ('Lanice', 'Montre',	1, 'Director', 'lamontre@gmail.com', 'Montreal Consulting Inc', 'Philadelphia', 'PA', 'ML', '2020-05-07 00:00:00-04', 'learn more'),
 ('Do', 'Ji',	1, 'Director', 'mar@smith.org', 'Mafolab', 'Rockville', 'AZ', 'CC', '2020-05-07 00:00:00-04', 'networking'),
@@ -123,10 +123,10 @@ VALUES
 --
 -- TOC entry 2834 (class 0 OID 16722)
 -- Dependencies: 202
--- Data for Name: conference; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: conference; Type: TABLE DATA; Schema: techconfdb; Owner: -
 --
 
-INSERT INTO public.conference (name, active, date, price, address)
+INSERT INTO techconfdb.conference (name, active, date, price, address)
 VALUES
 ('TechConf', B'1', '2022-06-10', 495, '123 Main St, Baltimore, MD 12345'),
 ('TestConf', B'0', '1999-01-01', 1, '9');
@@ -136,10 +136,10 @@ VALUES
 --
 -- TOC entry 2838 (class 0 OID 16746)
 -- Dependencies: 206
--- Data for Name: notification; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: notification; Type: TABLE DATA; Schema: techconfdb; Owner: -
 --
 
-INSERT INTO public.notification (status, message, submitted_date, completed_date, subject)
+INSERT INTO techconfdb.notification (status, message, submitted_date, completed_date, subject)
 VALUES
 ('Notifications submitted',' ', NULL, NULL, ''),
 ('Notifications submitted','uyt','2020-05-07 18:00:38.573856-04','2020-05-07 18:00:39.124435-04','Welcome Email'),
@@ -151,38 +151,38 @@ VALUES
 
 --
 -- TOC entry 2704 (class 2606 OID 16738)
--- Name: attendee attendee_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: attendee attendee_pkey; Type: CONSTRAINT; Schema: techconfdb; Owner: -
 --
 
-ALTER TABLE ONLY public.attendee
+ALTER TABLE ONLY techconfdb.attendee
     ADD CONSTRAINT attendee_pkey PRIMARY KEY (id);
 
 
 --
 -- TOC entry 2702 (class 2606 OID 16726)
--- Name: conference conference_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: conference conference_pkey; Type: CONSTRAINT; Schema: techconfdb; Owner: -
 --
 
-ALTER TABLE ONLY public.conference
+ALTER TABLE ONLY techconfdb.conference
     ADD CONSTRAINT conference_pkey PRIMARY KEY (id);
 
 
 --
 -- TOC entry 2706 (class 2606 OID 16753)
--- Name: notification notification_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: notification notification_pkey; Type: CONSTRAINT; Schema: techconfdb; Owner: -
 --
 
-ALTER TABLE ONLY public.notification
+ALTER TABLE ONLY techconfdb.notification
     ADD CONSTRAINT notification_pkey PRIMARY KEY (id);
 
 
 --
 -- TOC entry 2707 (class 2606 OID 16739)
--- Name: attendee conference; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: attendee conference; Type: FK CONSTRAINT; Schema: techconfdb; Owner: -
 --
 
-ALTER TABLE ONLY public.attendee
-    ADD CONSTRAINT conference FOREIGN KEY (conference_id) REFERENCES public.conference(id);
+ALTER TABLE ONLY techconfdb.attendee
+    ADD CONSTRAINT conference FOREIGN KEY (conference_id) REFERENCES techconfdb.conference(id);
 
 
 -- Completed on 2020-05-08 07:52:45
