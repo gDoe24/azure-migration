@@ -57,6 +57,7 @@ def notifications():
 @app.route('/Notification', methods=['POST', 'GET'])
 def notification():
     if request.method == 'POST':
+        print("Made it")
         notification = Notification()
         notification.message = request.form['message']
         notification.subject = request.form['subject']
@@ -71,17 +72,21 @@ def notification():
             ## TODO: Refactor This logic into an Azure Function
             ## Code below will be replaced by a message queue
             #################################################
-            attendees = Attendee.query.all()
 
-            for attendee in attendees:
-                subject = '{}: {}'.format(attendee.first_name, notification.subject)
-                send_email(attendee.email, subject, notification.message)
+            # attendees = Attendee.query.all()
 
-            notification.completed_date = datetime.utcnow()
-            notification.status = 'Notified {} attendees'.format(len(attendees))
-            db.session.commit()
+            # for attendee in attendees:
+            #     subject = '{}: {}'.format(attendee.first_name, notification.subject)
+            #     send_email(attendee.email, subject, notification.message)
+
+            # notification.completed_date = datetime.utcnow()
+            # notification.status = 'Notified {} attendees'.format(len(attendees))
+            # db.session.commit()
+
             # TODO Call servicebus queue_client to enqueue notification ID
-
+            notification_id = notification.id
+            message = Message(str(notification_id))
+            queue_client.send(message)
             #################################################
             ## END of TODO
             #################################################
