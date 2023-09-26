@@ -57,7 +57,6 @@ def notifications():
 @app.route('/Notification', methods=['POST', 'GET'])
 def notification():
     if request.method == 'POST':
-        print("Made it")
         notification = Notification()
         notification.message = request.form['message']
         notification.subject = request.form['subject']
