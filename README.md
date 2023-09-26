@@ -70,4 +70,4 @@ Complete a month cost analysis of each Azure resource to give an estimate total 
 | *Azure Storage Account*            |    G2    |      $0.018 per GB       |
 
 ## Architecture Explanation
-This is a placeholder section where you can provide an explanation and reasoning for your architecture selection for both the Azure Web App and Azure Function.
+Starting with the database, since we are migrating the existing Postgres Database to Azure, we should use the Azure Postgres Database to restore the data that we already have. To replicate the website, Azure App Service will work well as it is easy to scale and we do not have to manage any of the infrastructure. Since we want to be able to send notifications to users who sign up, a Service Bus Queue works well with Azure function to do so. We can add a notification to the queue and then process the notification using a serverless Azure Function. The Azure Storage account is used by the Azure Function.
