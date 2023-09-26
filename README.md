@@ -67,6 +67,7 @@ Complete a month cost analysis of each Azure resource to give an estimate total 
  *Azure Service Bus*   |   Basic      |    $0.05/million operations      |
 | *Azure Functions*              |     Pay as You go    |   first 400,000 GB/s of execution and 1,000,000 executions are free.   |
 | *Azure App Service*            |    B1    |      $12.41        |
+| *Azure Storage Account*            |    G2    |      $0.018 per GB       |
 
 ## Architecture Explanation
 This is a placeholder section where you can provide an explanation and reasoning for your architecture selection for both the Azure Web App and Azure Function.
